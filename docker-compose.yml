@@ -1,0 +1,76 @@
+version: '3'
+services:
+  spark-master:
+    image: hpcjmart/spark-master:latest
+    container_name: spark-master
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    environment:
+      - INIT_DAEMON_STEP=setup_spark
+    volumes:
+      - shared-workspace:/opt/workspace
+
+  spark-worker-1:
+    image: hpcjmart/spark-worker:latest
+    container_name: spark-worker-1
+    depends_on:
+      - spark-master
+    ports:
+      - "4041:4040"
+      - "18081:8081"
+    environment:
+      - "SPARK_MASTER=spark://spark-master:7077"
+    volumes:
+      - shared-workspace:/opt/workspace
+
+  spark-worker-2:
+    image: hpcjmart/spark-worker:latest
+    container_name: spark-worker-2
+    depends_on:
+      - spark-master
+    ports:
+      - "4042:4040"
+      - "18082:8081"
+    environment:
+      - "SPARK_MASTER=spark://spark-master:7077"
+    volumes:
+      - shared-workspace:/opt/workspace
+
+  spark-worker-3:
+    image: hpcjmart/spark-worker:latest
+    container_name: spark-worker-3
+    depends_on:
+      - spark-master
+    ports:
+      - "4043:4040"
+      - "18083:8081"
+    environment:
+      - "SPARK_MASTER=spark://spark-master:7077"
+    volumes:
+      - shared-workspace:/opt/workspace
+
+        #  historyserver:
+        #image: hpcjmart/spark-historyserver:latest
+        #container_name: spark-historyserver
+        #depends_on:
+        #- spark-master
+        #ports:
+        #- 18081:18081
+        #volumes:
+        #- /tmp/spark-events-local:/tmp/spark-events
+
+  jupyterlab:
+    image: hpcjmart/spark-jupyter:latest
+    container_name: jupyterlab
+    ports:
+      - 8889:8888
+    volumes:
+      - shared-workspace:/opt/workspace
+      - ./local/notebooks:/opt/workspace/notebooks
+
+volumes:
+  shared-workspace:
+    name: "hadoop-distributed-file-system"
+    driver: local
+
