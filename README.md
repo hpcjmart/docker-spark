@@ -17,3 +17,5 @@ Ecosistema ampliado: Spark cuenta con un ecosistema de bibliotecas y herramienta
 En resumen, Apache Spark es una poderosa plataforma de procesamiento de datos en memoria que ofrece velocidad, flexibilidad y capacidad de procesamiento avanzada para una variedad de aplicaciones de análisis de datos y procesamiento en tiempo real. Su arquitectura distribuida y su rico conjunto de características lo hacen popular en entornos de big data y análisis de datos a gran escala.
 
 ## Arquitectura de Apache Spark
+
+![Arquitectura](imagenes/esquema_spark.webp)
