@@ -1,4 +1,4 @@
-FROM hpcjmart/spark-jupyter-base:latest
+FROM hpcjmart/spark-hadoop-jupyter-base:latest
 
 # -- Layer: JupyterLab
 

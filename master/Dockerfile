@@ -1,6 +1,4 @@
-FROM hpcjmart/spark-base:latest
-
-LABEL maintainer="Gezim Sejdiu <g.sejdiu@gmail.com>, Giannis Mouchakis <gmouchakis@gmail.com>"
+FROM hpcjmart/spark-hadoop-base:3.2.1-3.2
 
 COPY master.sh /
 

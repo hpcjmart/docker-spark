@@ -5,6 +5,6 @@ build:
 	docker build -t hpcjmart/spark-hadoop-base:$(current_branch) ./base
 	docker build -t hpcjmart/spark-hadoop-master:$(current_branch) ./master
 	docker build -t hpcjmart/spark-hadoop-worker:$(current_branch) ./worker
-	docker build -t hpcjmart/spark-hadoop-jupyter-base:$(current_branch) ./jupyter-base
-	docker build -t hpcjmart/spark-hadoop-jupiter:$(current_branch) ./jupyter
+	docker build -t hpcjmart/spark-hadoop-jupyter-base ./jupyter-base
+	docker build -t hpcjmart/spark-hadoop-jupiter ./jupyter
 
